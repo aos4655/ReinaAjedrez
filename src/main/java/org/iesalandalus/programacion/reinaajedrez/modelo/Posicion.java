@@ -7,8 +7,8 @@ public class Posicion {
 	private char columna;
 	
 	public Posicion(int fila, char columna) {
-		setFila(fila);
-		setColumna(columna);
+		this.fila = fila;
+		this.columna = columna;
 	}
 	public Posicion(Posicion posicion) {
 		setFila(posicion.fila);
@@ -18,12 +18,19 @@ public class Posicion {
 		return fila;
 	}
 	private void setFila(int fila) {
+		if (fila>8 || fila <1) {
+			throw new IllegalArgumentException("ERROR: Fila no válida.");
+		}
 		this.fila = fila;
 	}
 	public char getColumna() {
 		return columna;
 	}
 	private void setColumna(char columna) {
+		
+		if (columna < 'a' || columna> 'h' ) {
+			throw new IllegalArgumentException("ERROR: Columna no válida.");
+		}
 		this.columna = columna;
 	}
 	@Override
