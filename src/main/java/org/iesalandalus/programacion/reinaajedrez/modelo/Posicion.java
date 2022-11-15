@@ -7,12 +7,19 @@ public class Posicion {
 	private char columna;
 	
 	public Posicion(int fila, char columna) {
-		this.fila = fila;
-		this.columna = columna;
+		
+			setFila(fila);
+			setColumna(columna);
+		
 	}
 	public Posicion(Posicion posicion) {
-		setFila(posicion.fila);
-		setColumna(posicion.columna);
+		if(posicion == null) {
+			throw new NullPointerException("ERROR: No es posible copiar una posición nula.");
+		}
+		else {
+			setFila(posicion.fila);
+			setColumna(posicion.columna);
+		}
 	}
 	public int getFila() {
 		return fila;
@@ -21,7 +28,10 @@ public class Posicion {
 		if (fila>8 || fila <1) {
 			throw new IllegalArgumentException("ERROR: Fila no válida.");
 		}
-		this.fila = fila;
+		else {
+			this.fila = fila;
+
+		}
 	}
 	public char getColumna() {
 		return columna;
