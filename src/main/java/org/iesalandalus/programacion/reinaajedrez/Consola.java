@@ -20,7 +20,7 @@ public class Consola {
 	public static int elegirOpcionMenu() {
 		int opcion = 0;
 		while (opcion<1 || opcion >4) {
-			System.out.println("Elija la opcion");
+			System.out.print("Elija la opcion: ");
 			opcion = Entrada.entero();
 		}
 		
@@ -62,11 +62,11 @@ public class Consola {
 		System.out.println("8) Suroeste");
 	}
 	public static Direccion elegirDireccion() {
-		System.out.println("Elija una direccion (numero): ");
+		System.out.print("Elija una direccion (numero): ");
 		Direccion direccion = null;
 		int d = Entrada.entero();
 		while (d<1 && d>8) {
-			System.out.println("Elija una direccion (numero): ");
+			System.out.print("Elija una direccion (numero): ");
 			d = Entrada.entero();	
 		}
 		switch (d) {
@@ -100,7 +100,7 @@ public class Consola {
 	public static int elegirPasos() {
 		int pasos = 0;
 		while (pasos<1 || pasos >8) {
-			System.out.println("Introduzca el numero de pasos: ");
+			System.out.print("Introduzca el numero de pasos: ");
 			pasos = Entrada.entero();
 		}
 		return pasos;

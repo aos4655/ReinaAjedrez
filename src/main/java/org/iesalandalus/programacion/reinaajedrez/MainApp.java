@@ -10,18 +10,28 @@ public class MainApp {
 	private static Reina reina1;
 	
 	public static void main(String[] args) throws OperationNotSupportedException {
+		int op;
+		boolean avanza = false;
 		Consola.MostrarMenu();
-		int op= Consola.elegirOpcionMenu();
-		ejecutarOpcion(op);
-		
-		while(op != 4) {
+		op = Consola.elegirOpcionMenu();
+		if(op == 3 && reina1 == null) {
+			System.out.println("Error: debes crear una reina antes de poder mover");
+		}
+		else if((op<1 || op>4) && reina1 != null) {
+			avanza = true;
+			ejecutarOpcion(op);
+		}
+		do {
 			Consola.MostrarMenu();
 			op= Consola.elegirOpcionMenu();
-			ejecutarOpcion(op);
-			
+			if(op == 3 && reina1 == null) {
+				System.out.println("Error: debes crear una reina antes de poder mover");
+			}
+			else {
+				ejecutarOpcion(op);
+			}
 		}
-		
-		Consola.desperdirse();
+		while(avanza == false);
 	}
 	public static void ejecutarOpcion(int opcion) throws OperationNotSupportedException {
 		switch (opcion) {
@@ -57,7 +67,11 @@ public class MainApp {
 			Consola.mostrarMenuDirecciones();
 			Direccion d = Consola.elegirDireccion();
 			int p = Consola.elegirPasos();
-			reina1.mover(d, p);
+			try {
+				reina1.mover(d, p);
+			}catch(IllegalArgumentException|OperationNotSupportedException e) {
+				System.out.println(e.getMessage()+"\n");
+			}
 		}
 		
 	}
